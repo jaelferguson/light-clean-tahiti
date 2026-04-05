@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Light Clean Tahiti</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Inter:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
 /* 1. Global Reset & Background */
@@ -13,8 +13,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  /* Replace 'background.jpg' with your beach image URL */
-  background: url('background.jpg') no-repeat center center fixed;
+  /* Premium Beach Background */
+  background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2000&q=80') no-repeat center center fixed;
   background-size: cover;
   color: #1c1c1c;
   min-height: 100vh;
@@ -23,7 +23,7 @@ body {
   align-items: center;
 }
 
-/* 2. Premium Header (No Box, Just Text & Icon) */
+/* 2. Premium Header (Minimalistic) */
 header {
   padding: 50px 20px 30px 20px;
   text-align: center;
@@ -34,24 +34,20 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
-}
-
-.brand-icon {
-  font-size: 50px; /* Using emoji as placeholder, replace with <img> if needed */
-  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.2));
+  gap: 8px;
 }
 
 .main-title {
   margin: 0;
-  font-size: 3rem;
+  font-size: 3.2rem;
   font-weight: 900;
   letter-spacing: -2px;
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
   line-height: 1;
+  /* Pop effect against the sky */
+  filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.15));
 }
 
-/* Dual-Tone Gradient for Logo Colors */
+/* Blue & Green Gradients from your Logo */
 .blue-part {
   background: linear-gradient(to bottom, #4facfe 0%, #00f2fe 100%);
   -webkit-background-clip: text;
@@ -65,46 +61,53 @@ header {
 
 .subtitle {
   font-family: 'Inter', sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
   color: #333;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-top: 10px;
+  letter-spacing: 3px;
+  margin-top: 12px;
   opacity: 0.8;
 }
 
-/* 3. Glassmorphism Card Style */
+/* 3. Container & Glassmorphism Cards */
 .container {
   width: 90%;
   max-width: 450px;
+  padding-bottom: 80px; /* Space for the floating button */
 }
 
 .card {
-  background: rgba(255, 255, 255, 0.45); /* High transparency */
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.4);
   padding: 25px;
   margin-bottom: 20px;
   border-radius: 24px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
   text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
 }
 
 .card h2 {
   margin-top: 0;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 800;
+  color: #1c1c1c;
 }
 
 .card p {
   font-size: 15px;
-  line-height: 1.5;
-  color: #2c3e50;
+  line-height: 1.6;
+  margin: 10px 0 0 0;
 }
 
-/* 4. Buttons */
+/* 4. Interactive Elements (Buttons) */
 button {
   border: none;
   border-radius: 18px;
@@ -113,8 +116,8 @@ button {
   font-weight: 700;
   cursor: pointer;
   width: 100%;
-  transition: all 0.3s;
-  margin-top: 10px;
+  transition: all 0.3s ease;
+  margin-top: 15px;
 }
 
 .whatsapp {
@@ -132,7 +135,7 @@ button {
 button:disabled {
   background: #ccc;
   opacity: 0.6;
-  box-shadow: none;
+  cursor: not-allowed;
 }
 
 /* 5. Calendar Grid */
@@ -140,16 +143,16 @@ button:disabled {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 8px;
-  margin-top: 15px;
+  margin-top: 20px;
 }
 
 #calendar button {
   width: 100%;
-  padding: 10px 0;
+  padding: 12px 0;
   margin: 0;
   border-radius: 12px;
-  font-size: 13px;
-  background: rgba(255,255,255,0.3);
+  font-size: 14px;
+  background: rgba(255,255,255,0.4);
   color: #1c1c1c;
   box-shadow: none;
 }
@@ -159,8 +162,32 @@ button:disabled {
   color: white !important;
 }
 
+/* 6. Floating Instagram Button */
+.float-ig {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 12px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: all 0.3s ease;
+}
+
+.float-ig:hover {
+  transform: translateY(-5px) scale(1.1);
+}
+
 footer {
-  padding: 30px;
+  text-align: center;
+  padding: 20px;
   font-size: 12px;
   opacity: 0.6;
 }
@@ -171,7 +198,8 @@ footer {
 
 <header>
   <div class="logo-wrapper">
-    <div class="brand-icon">💧</div> <h1 class="main-title">
+    <div style="font-size: 40px; margin-bottom: 10px;">💧</div>
+    <h1 class="main-title">
       <span class="blue-part">LIGTH</span><span class="green-part">CLEAN</span>
     </h1>
     <div class="subtitle">Nettoyage & Jardinage • Tahiti</div>
@@ -203,27 +231,41 @@ footer {
   <div class="card">
     <h2>📅 Réserver une date</h2>
     <div id="calendar"></div>
-    <p id="selected-date" style="font-weight: 600; color: #00bfa6;"></p>
+    <p id="selected-date" style="font-weight: 700; color: #008f7a; margin-top: 15px;"></p>
 
     <button class="whatsapp" id="reserveBtn" disabled>📱 Réserver via WhatsApp</button>
     <button class="payment" id="payBtn">💳 Payer maintenant</button>
 
-    <div style="font-size:12px; margin-top:20px; text-align: left; opacity: 0.8;">
+    <div style="font-size:12px; margin-top:25px; text-align: left; opacity: 0.8; line-height: 1.6;">
       ✔️ Virement bancaire / Espèces le jour J<br>
       📧 Jephjess@yahoo.fr<br>
       RC : 211178A | N° Tahiti : 882 647
     </div>
   </div>
 
+  <footer>© Light Clean Tahiti — Service extérieur 🌴</footer>
 </div>
 
-<footer>© Light Clean Tahiti — Service extérieur 🌴</footer>
+<a href="https://www.instagram.com/ligthclean/" class="float-ig" target="_blank" aria-label="Instagram">
+  <svg viewBox="0 0 24 24" width="30" height="30" fill="url(#ig-grad)">
+    <defs>
+      <linearGradient id="ig-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#f09433;" />
+        <stop offset="25%" style="stop-color:#e6683c;" />
+        <stop offset="50%" style="stop-color:#dc2743;" />
+        <stop offset="100%" style="stop-color:#bc1888;" />
+      </linearGradient>
+    </defs>
+    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+  </svg>
+</a>
 
 <script>
-// Calendar Logic (Simplified)
+// Calendar Logic
 const calendar = document.getElementById("calendar");
 const selectedDateText = document.getElementById("selected-date");
 const reserveBtn = document.getElementById("reserveBtn");
+const payBtn = document.getElementById("payBtn");
 
 const today = new Date();
 const daysToShow = 14;
@@ -235,10 +277,10 @@ for (let i = 0; i < daysToShow; i++) {
   const dayBtn = document.createElement("button");
   dayBtn.textContent = day.getDate();
 
-  // Weekend Block
+  // Disable weekends
   if (day.getDay() === 0 || day.getDay() === 6) {
     dayBtn.disabled = true;
-    dayBtn.style.opacity = "0.3";
+    dayBtn.style.opacity = "0.2";
   } else {
     dayBtn.onclick = () => {
       document.querySelectorAll('#calendar button').forEach(b => b.classList.remove('selected'));
@@ -251,10 +293,17 @@ for (let i = 0; i < daysToShow; i++) {
   calendar.appendChild(dayBtn);
 }
 
-// WhatsApp Integration remains the same...
+// WhatsApp Integration
 reserveBtn.onclick = () => {
   const dateStr = selectedDateText.textContent;
-  window.location.href = `https://wa.me/68989716092?text=Bonjour Light Clean 🌴 Je souhaite réserver le ${dateStr}`;
+  const message = `Bonjour Light Clean 🌴 Je souhaite réserver le ${dateStr}`;
+  window.location.href = `https://wa.me/68989716092?text=${encodeURIComponent(message)}`;
+};
+
+payBtn.onclick = () => {
+  const dateStr = selectedDateText.textContent;
+  const message = `Bonjour Light Clean 🌴 Je souhaite payer mon service ${dateStr}`;
+  window.location.href = `https://wa.me/68989716092?text=${encodeURIComponent(message)}`;
 };
 </script>
 
