@@ -5,97 +5,112 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Light Clean Tahiti</title>
     <style>
-        body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f4fdfb; color: #2c3e50; }
+        /* This makes it look like a real App */
+        body { 
+            margin: 0; 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+            background: #f0f7f6; /* Soft premium grey-blue background */
+            color: #1a2a28; 
+        }
         
-        /* PREMIUM GRADIENT HEADER */
+        /* THE VIBRANT HEADER */
         header {
             background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-            padding: 50px 20px;
+            padding: 60px 20px 40px;
             text-align: center;
-            border-bottom-left-radius: 40px;
-            border-bottom-right-radius: 40px;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
             color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 15px 30px rgba(67, 233, 123, 0.2);
         }
 
-        /* THE WHITE LOGO BOX (Like your picture) */
+        /* FIXED LOGO BOX - No more stretching */
         .logo-box {
-            width: 85px;
-            height: 85px;
+            width: 90px;
+            height: 90px;
             background: white;
-            border-radius: 22px;
-            margin: 0 auto 15px;
+            border-radius: 25px;
+            margin: 0 auto 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            overflow: hidden; /* This crops the edges of your photo */
         }
-        .logo-box img { width: 80%; height: auto; }
+        .logo-box img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; /* This makes the logo fit perfectly inside the box */
+        }
 
-        h1 { margin: 0; font-size: 28px; letter-spacing: 2px; font-weight: 800; text-transform: uppercase; }
-        .subtitle { font-size: 13px; opacity: 0.9; margin-top: 5px; font-weight: 300; }
+        h1 { margin: 0; font-size: 32px; letter-spacing: 3px; font-weight: 900; text-transform: uppercase; text-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .subtitle { font-size: 14px; opacity: 0.9; margin-top: 8px; font-weight: 500; letter-spacing: 1px; }
 
-        /* PREMIUM CARDS */
-        .container { padding: 20px; max-width: 500px; margin: auto; }
+        /* THE PREMIUM CARDS */
+        .container { padding: 25px; max-width: 500px; margin: auto; }
         .card {
             background: white;
-            padding: 25px;
-            margin-bottom: 20px;
-            border-radius: 30px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.04);
-            border: 1px solid #eef5f4;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 35px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+            border: 1px solid rgba(255,255,255,0.8);
         }
 
         .card-header {
             display: flex;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 15px;
+            gap: 15px;
+            margin-bottom: 20px;
             color: #00bfa6;
-            font-weight: 700;
-            font-size: 20px;
+            font-weight: 800;
+            font-size: 22px;
         }
 
         /* CLEAN PRICE BOXES */
         .price-box {
-            background: #f8fdfd;
+            background: linear-gradient(to bottom, #ffffff, #f4fdfb);
             border: 1px solid #e0f2f1;
-            border-radius: 20px;
-            padding: 20px;
+            border-radius: 25px;
+            padding: 22px;
             text-align: center;
-            margin-top: 10px;
+            margin-top: 15px;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
         }
-        .price-box span { display: block; font-size: 14px; color: #777; margin-bottom: 5px; }
-        .price-box strong { font-size: 26px; color: #2c3e50; font-weight: 700; }
+        .price-box span { display: block; font-size: 14px; color: #889c99; margin-bottom: 8px; font-weight: 600; text-transform: uppercase; }
+        .price-box strong { font-size: 30px; color: #1a2a28; font-weight: 800; }
 
-        /* PREMIUM BUTTONS */
+        /* PREMIUM APP BUTTONS */
         .btn {
             display: block;
             width: 100%;
-            padding: 18px;
-            border-radius: 18px;
+            padding: 20px;
+            border-radius: 20px;
             text-align: center;
             text-decoration: none;
-            font-weight: bold;
-            margin-top: 12px;
-            font-size: 16px;
+            font-weight: 800;
+            margin-top: 15px;
+            font-size: 18px;
             box-sizing: border-box;
             border: none;
-            transition: 0.2s;
+            transition: 0.3s;
         }
         .btn-green { 
             background: linear-gradient(135deg, #00bfa6, #43e97b); 
             color: white; 
-            box-shadow: 0 5px 15px rgba(0,191,166,0.2);
+            box-shadow: 0 10px 20px rgba(0,191,166,0.3);
         }
-        .btn-wa { background: #25D366; color: white; }
+        .btn-wa { background: #25D366; color: white; box-shadow: 0 10px 20px rgba(37,211,102,0.2); }
+        
+        .btn:active { transform: scale(0.96); opacity: 0.9; }
+
     </style>
 </head>
 <body>
 
 <header>
     <div class="logo-box">
-        <img src="logo1.png" alt="Light Clean Logo">
+        <img src="logo1.png" alt="Logo">
     </div>
     <h1>LIGHT CLEAN</h1>
     <div class="subtitle">NETTOYAGE • JARDINAGE • ÉLAGAGE</div>
@@ -105,15 +120,15 @@
 
     <div class="card">
         <div class="card-header">
-            <span style="font-size: 30px;">🌴</span> 
+            <span style="font-size: 32px;">🌴</span> 
             Nos Services
         </div>
-        <p style="margin:0; color:#555; line-height: 1.5;">Services de nettoyage premium et entretien de jardins pour villas et Airbnb à Tahiti.</p>
+        <p style="margin:0; color:#5c6b69; line-height: 1.6; font-size: 16px;">Services de nettoyage premium et entretien de jardins pour villas et Airbnb à Tahiti.</p>
     </div>
 
     <div class="card">
         <div class="card-header">
-            <span style="font-size: 30px;">💰</span> 
+            <span style="font-size: 32px;">💰</span> 
             Tarifs Forfaits
         </div>
         <div class="price-box">
@@ -129,7 +144,7 @@
     <div class="card">
         <div class="card-header">📅 Réserver</div>
         <a href="#" class="btn btn-green">Réserver & Payer</a>
-        <a href="https://wa.me/68987000000" class="btn btn-wa">Contact Direct WhatsApp</a>
+        <a href="https://wa.me/68987000000" class="btn btn-wa">WhatsApp Direct</a>
     </div>
 
 </div>
