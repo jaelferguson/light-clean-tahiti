@@ -5,82 +5,126 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Light Clean Tahiti</title>
 
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+
 <style>
-/* Body with custom background image and overlay */
+/* Body with full background image */
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   background: url('background.jpg') no-repeat center center fixed;
   background-size: cover;
-  color: #2c3e50;
+  color: #1c1c1c;
   position: relative;
+  min-height: 100vh;
 }
+
+/* Optional subtle overlay for readability */
 body::before {
   content: "";
   position: fixed;
   top: 0; left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255,255,255,0.1); /* less white for visibility */
   z-index: -1;
 }
 
 /* Header */
 header {
-  background: linear-gradient(135deg, #00bfa6, #43e97b);
+  background: rgba(0,191,166,0.85);
   color: white;
   padding: 30px 20px;
   text-align: center;
+  font-family: 'Playfair Display', serif;
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
 }
-h1 { margin: 0; font-size: 28px; }
-.subtitle { font-size: 14px; opacity: 0.9; }
+h1 { margin: 0; font-size: 34px; letter-spacing: 1px; }
+.subtitle { font-size: 16px; opacity: 0.9; font-weight: 400; }
 
 /* Sections and cards */
 .section { padding: 20px; }
 .card {
-  background: white;
-  padding: 18px;
-  margin-bottom: 15px;
-  border-radius: 16px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+  background: rgba(255,255,255,0.2);
+  padding: 22px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transition: transform 0.2s;
 }
-.card h2 { margin-top: 0; }
+.card:hover { transform: translateY(-4px); }
+.card h2 { margin-top: 0; font-family: 'Playfair Display', serif; }
 
-/* Buttons */
+/* Glass buttons style */
 button {
-  background: linear-gradient(135deg, #00bfa6, #43e97b);
-  color: white;
   border: none;
-  padding: 14px;
-  border-radius: 10px;
+  border-radius: 16px;
+  padding: 16px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
   width: 100%;
-  font-size: 16px;
-  margin-top: 10px;
-  cursor: pointer;
+  color: white;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: all 0.3s;
 }
+button:hover { transform: translateY(-2px); }
 button:disabled { opacity: 0.5; cursor: not-allowed; }
-.whatsapp { background: #25D366; }
-.payment { background: #f7941d; }
 
-/* Calendar buttons */
+/* Specific buttons */
+.whatsapp { background: rgba(37,211,102,0.8); }
+.whatsapp:hover { background: rgba(37,211,102,1); }
+.payment { background: rgba(247,148,29,0.8); }
+.payment:hover { background: rgba(247,148,29,1); }
+
+/* Calendar */
+#calendar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 10px;
+}
 #calendar button {
-  flex: 1 0 30%;
-  margin: 5px;
-  padding: 10px;
-  border-radius: 10px;
-  border: 1px solid #00bfa6;
-  background: white;
-  color: #2c3e50;
-  cursor: pointer;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.2);
+  color: #1c1c1c;
+  font-weight: 500;
+  font-size: 14px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: all 0.3s;
+}
+#calendar button:hover {
+  background: rgba(0,191,166,0.85);
+  color: white;
 }
 #calendar button.disabled {
-  background: #eee;
+  background: rgba(255,255,255,0.1);
   color: #999;
   cursor: not-allowed;
 }
 
 /* Footer */
-footer { text-align: center; padding: 20px; font-size: 13px; color: #777; }
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 13px;
+  color: #555;
+  font-family: 'Montserrat', sans-serif;
+}
 </style>
 </head>
 
@@ -115,7 +159,7 @@ footer { text-align: center; padding: 20px; font-size: 13px; color: #777; }
 
   <div class="card">
     <h2>📅 Réserver une date</h2>
-    <div id="calendar" style="display:flex; flex-wrap:wrap;"></div>
+    <div id="calendar"></div>
     <p id="selected-date" style="margin-top:10px; font-size:14px;"></p>
 
     <button class="whatsapp" id="reserveBtn" disabled>📱 Réserver via WhatsApp</button>
@@ -139,6 +183,14 @@ footer { text-align: center; padding: 20px; font-size: 13px; color: #777; }
 <footer>© Light Clean Tahiti — Service extérieur 🌴</footer>
 
 <script>
+// Helper to format date DD/MM/YYYY
+function formatDateFR(date) {
+  const d = date.getDate().toString().padStart(2,'0');
+  const m = (date.getMonth()+1).toString().padStart(2,'0');
+  const y = date.getFullYear();
+  return `${d}/${m}/${y}`;
+}
+
 // Calendar setup
 const calendar = document.getElementById("calendar");
 const selectedDateText = document.getElementById("selected-date");
@@ -147,43 +199,39 @@ const payBtn = document.getElementById("payBtn");
 
 const today = new Date();
 const daysToShow = 14;
-const bookedDates = ["2026-04-07","2026-04-10"]; // Example booked dates
+const bookedDates = ["2026-04-07","2026-04-10"]; // example booked dates
 
 function isBlocked(date) {
   const day = date.getDay();
   const iso = date.toISOString().split('T')[0];
   if (day === 0 || day === 6) return true; // weekends blocked
-  if (bookedDates.includes(iso)) return true; // already booked
+  if (bookedDates.includes(iso)) return true;
   return false;
 }
 
+// Generate calendar
 for (let i = 0; i < daysToShow; i++) {
   const day = new Date();
   day.setDate(today.getDate() + i);
 
   const dayBtn = document.createElement("button");
-  dayBtn.textContent = day.toLocaleDateString('fr-CA', { weekday:'short', day:'numeric', month:'numeric' });
+  dayBtn.textContent = day.getDate();
 
   if (isBlocked(day)) {
     dayBtn.classList.add("disabled");
     dayBtn.disabled = true;
   } else {
     dayBtn.onclick = () => {
-      selectedDateText.textContent = `Date sélectionnée : ${day.toLocaleDateString('fr-FR')}`;
+      selectedDateText.textContent = `Date sélectionnée : ${formatDateFR(day)}`;
       reserveBtn.disabled = false;
-
-      reserveBtn.onclick = () => {
-        const message = `Bonjour Light Clean 🌴 je souhaite réserver le ${day.toLocaleDateString('fr-FR')}`;
-        window.location.href = `https://wa.me/68989716092?text=${encodeURIComponent(message)}`;
-      };
 
       document.querySelectorAll('#calendar button').forEach(btn => {
         if (!btn.disabled) {
-          btn.style.background = "white";
-          btn.style.color = "#2c3e50";
+          btn.style.background = "rgba(255,255,255,0.2)";
+          btn.style.color = "#1c1c1c";
         }
       });
-      dayBtn.style.background = "#00bfa6";
+      dayBtn.style.background = "rgba(0,191,166,0.85)";
       dayBtn.style.color = "white";
     };
   }
@@ -191,11 +239,25 @@ for (let i = 0; i < daysToShow; i++) {
   calendar.appendChild(dayBtn);
 }
 
-// Payment button
+// Reserve via WhatsApp
+reserveBtn.onclick = () => {
+  const selectedDate = selectedDateText.textContent.replace("Date sélectionnée : ", "");
+  const message = `Bonjour Light Clean 🌴 je souhaite réserver le ${selectedDate}`;
+  window.location.href = `https://wa.me/68989716092?text=${encodeURIComponent(message)}`;
+};
+
+// Pay via WhatsApp
 payBtn.onclick = () => {
-  window.location.href = "https://jephjess.payments.com"; // your real payment link
+  const selectedDate = selectedDateText.textContent.replace("Date sélectionnée : ", "");
+  let message = "";
+  if(selectedDate) {
+    message = `Bonjour Light Clean 🌴 je souhaite réserver et payer mon service le ${selectedDate}`;
+  } else {
+    message = `Bonjour Light Clean 🌴 je souhaite réserver et payer mon service`;
+  }
+  window.location.href = `https://wa.me/68989716092?text=${encodeURIComponent(message)}`;
 };
 </script>
 
 </body>
-</html>
+  </html>
