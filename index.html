@@ -1,153 +1,141 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Light Clean Tahiti</title>
-    <style>
-        /* This makes it look like a real App */
-        body { 
-            margin: 0; 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-            background: #f0f7f6; /* Soft premium grey-blue background */
-            color: #1a2a28; 
-        }
-        
-        /* THE VIBRANT HEADER */
-        header {
-            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-            padding: 60px 20px 40px;
-            text-align: center;
-            border-bottom-left-radius: 50px;
-            border-bottom-right-radius: 50px;
-            color: white;
-            box-shadow: 0 15px 30px rgba(67, 233, 123, 0.2);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Light Clean Tahiti</title>
 
-        /* FIXED LOGO BOX - No more stretching */
-        .logo-box {
-            width: 90px;
-            height: 90px;
-            background: white;
-            border-radius: 25px;
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            overflow: hidden; /* This crops the edges of your photo */
-        }
-        .logo-box img { 
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover; /* This makes the logo fit perfectly inside the box */
-        }
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom, #e8fdfb, #ffffff);
+  color: #2c3e50;
+}
 
-        h1 { margin: 0; font-size: 32px; letter-spacing: 3px; font-weight: 900; text-transform: uppercase; text-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        .subtitle { font-size: 14px; opacity: 0.9; margin-top: 8px; font-weight: 500; letter-spacing: 1px; }
+header {
+  background: linear-gradient(135deg, #00bfa6, #43e97b);
+  color: white;
+  padding: 30px 20px;
+  text-align: center;
+}
 
-        /* THE PREMIUM CARDS */
-        .container { padding: 25px; max-width: 500px; margin: auto; }
-        .card {
-            background: white;
-            padding: 30px;
-            margin-bottom: 25px;
-            border-radius: 35px;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.06);
-            border: 1px solid rgba(255,255,255,0.8);
-        }
+h1 {
+  margin: 0;
+  font-size: 28px;
+}
 
-        .card-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
-            color: #00bfa6;
-            font-weight: 800;
-            font-size: 22px;
-        }
+.subtitle {
+  font-size: 14px;
+  opacity: 0.9;
+}
 
-        /* CLEAN PRICE BOXES */
-        .price-box {
-            background: linear-gradient(to bottom, #ffffff, #f4fdfb);
-            border: 1px solid #e0f2f1;
-            border-radius: 25px;
-            padding: 22px;
-            text-align: center;
-            margin-top: 15px;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
-        }
-        .price-box span { display: block; font-size: 14px; color: #889c99; margin-bottom: 8px; font-weight: 600; text-transform: uppercase; }
-        .price-box strong { font-size: 30px; color: #1a2a28; font-weight: 800; }
+.section {
+  padding: 20px;
+}
 
-        /* PREMIUM APP BUTTONS */
-        .btn {
-            display: block;
-            width: 100%;
-            padding: 20px;
-            border-radius: 20px;
-            text-align: center;
-            text-decoration: none;
-            font-weight: 800;
-            margin-top: 15px;
-            font-size: 18px;
-            box-sizing: border-box;
-            border: none;
-            transition: 0.3s;
-        }
-        .btn-green { 
-            background: linear-gradient(135deg, #00bfa6, #43e97b); 
-            color: white; 
-            box-shadow: 0 10px 20px rgba(0,191,166,0.3);
-        }
-        .btn-wa { background: #25D366; color: white; box-shadow: 0 10px 20px rgba(37,211,102,0.2); }
-        
-        .btn:active { transform: scale(0.96); opacity: 0.9; }
+.card {
+  background: white;
+  padding: 18px;
+  margin-bottom: 15px;
+  border-radius: 16px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+}
 
-    </style>
+.card h2 {
+  margin-top: 0;
+}
+
+button {
+  background: linear-gradient(135deg, #00bfa6, #43e97b);
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 10px;
+  width: 100%;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.whatsapp {
+  background: #25D366;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 13px;
+  color: #777;
+}
+</style>
 </head>
+
 <body>
 
 <header>
-    <div class="logo-box">
-        <img src="logo1.png" alt="Logo">
-    </div>
-    <h1>LIGHT CLEAN</h1>
-    <div class="subtitle">NETTOYAGE • JARDINAGE • ÉLAGAGE</div>
+  <h1>LIGHT CLEAN 🌴</h1>
+  <div class="subtitle">
+    Jardinage • Nettoyage extérieur • Élagage • Tahiti
+  </div>
 </header>
 
-<div class="container">
+<div class="section">
 
-    <div class="card">
-        <div class="card-header">
-            <span style="font-size: 32px;">🌴</span> 
-            Nos Services
-        </div>
-        <p style="margin:0; color:#5c6b69; line-height: 1.6; font-size: 16px;">Services de nettoyage premium et entretien de jardins pour villas et Airbnb à Tahiti.</p>
-    </div>
+  <div class="card">
+    <h2>🌿 Nettoyage extérieur</h2>
+    <p>Terrains, cours, jardins, déchets verts</p>
+  </div>
 
-    <div class="card">
-        <div class="card-header">
-            <span style="font-size: 32px;">💰</span> 
-            Tarifs Forfaits
-        </div>
-        <div class="price-box">
-            <span>Pack Intervention 3h</span>
-            <strong>39500 XPF</strong>
-        </div>
-        <div class="price-box">
-            <span>Pack Intervention 6h</span>
-            <strong>59500 XPF</strong>
-        </div>
-    </div>
+  <div class="card">
+    <h2>🌱 Jardinage</h2>
+    <p>Tonte, entretien tropical, débroussaillage</p>
+  </div>
 
-    <div class="card">
-        <div class="card-header">📅 Réserver</div>
-        <a href="#" class="btn btn-green">Réserver & Payer</a>
-        <a href="https://wa.me/68987000000" class="btn btn-wa">WhatsApp Direct</a>
-    </div>
+  <div class="card">
+    <h2>🌴 Élagage</h2>
+    <p>Coupe arbres & palmiers, service sécurisé</p>
+  </div>
+
+  <div class="card">
+    <h2>💰 Tarifs</h2>
+    <p>
+      3h : 39 500 XPF<br>
+      6h : 59 500 XPF
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>📅 Disponibilités</h2>
+
+    <iframe 
+      src="PASTE_GOOGLE_CALENDAR_EMBED_LINK_HERE" 
+      style="border:0" 
+      width="100%" 
+      height="400">
+    </iframe>
+
+    <button class="whatsapp" onclick="whatsapp()">
+      📱 Réserver via WhatsApp
+    </button>
+
+    <p style="font-size:14px; margin-top:10px;">
+      Paiement accepté :
+      <br>✔️ Virement bancaire
+      <br>✔️ Espèces le jour du service
+    </p>
+  </div>
 
 </div>
+
+<footer>
+  © Light Clean Tahiti — Service extérieur 🌴
+</footer>
+
+<script>
+function whatsapp() {
+  window.location.href = "https://wa.me/689XXXXXXXX?text=Bonjour%20Light%20Clean%20🌴%20je%20souhaite%20un%20service%20de%20jardinage%20ou%20élagage";
+}
+</script>
 
 </body>
 </html>
